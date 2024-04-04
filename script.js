@@ -7,4 +7,13 @@ document.querySelectorAll('.social-link').forEach(item => {
     const moveY = randY * distance;
     item.style.transform = `translate(${moveX}px, ${moveY}px)`;
   });
+
+  item.addEventListener('touchstart', (e) => {
+    const randX = Math.random() > 0.5 ? -1 : 1;
+    const randY = Math.random() > 0.5 ? -1 : 1;
+    const distance = 100;
+    const moveX = randX * distance;
+    const moveY = randY * distance;
+    item.style.transform = `translate(${moveX}px, ${moveY}px)`;
+  }, {passive: true});
 });
