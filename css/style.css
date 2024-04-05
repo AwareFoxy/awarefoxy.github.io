@@ -134,7 +134,7 @@ body.dark-theme .social-link:hover {
 }
 
 #particles-js{
-  position:fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;

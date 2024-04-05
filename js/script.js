@@ -75,7 +75,7 @@ particlesJS('particles-js', {
         },
         move: {
             enable: true,
-            speed: 6
+            speed: 3
         }
     },
     interactivity: {
@@ -87,6 +87,12 @@ particlesJS('particles-js', {
             onclick: {
                 enable: true,
                 mode: "push"
+            }
+        },
+        modes: {
+            repulse: {
+                distance: 100,
+                duration: 0.4
             }
         }
     },
