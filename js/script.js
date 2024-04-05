@@ -1,19 +1,21 @@
 document.querySelectorAll('.social-link').forEach(item => {
-    item.addEventListener('mouseenter', (e) => {
-        const randX = Math.random() > 0.5 ? -1 : 1;
-        const randY = Math.random() > 0.5 ? -1 : 1;
-        const distance = 100;
-        const moveX = randX * distance;
-        const moveY = randY * distance;
-        item.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    item.addEventListener('mouseenter', () => {
+        item.style.transform = 'scale(1.05)';
+        item.style.boxShadow = '0px 8px 24px rgba(0, 0, 0, 0.5)';
     });
 
-    item.addEventListener('touchstart', (e) => {
-        const randX = Math.random() > 0.5 ? -1 : 1;
-        const randY = Math.random() > 0.5 ? -1 : 1;
-        const distance = 100;
-        const moveX = randX * distance;
-        const moveY = randY * distance;
-        item.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    item.addEventListener('mouseleave', () => {
+        item.style.transform = 'scale(1)';
+        item.style.boxShadow = '0px 4px 14px rgba(0, 0, 0, 0.25)';
+    });
+
+    item.addEventListener('touchstart', () => {
+        item.style.transform = 'scale(1.05)';
+        item.style.boxShadow = '0px 8px 24px rgba(0, 0, 0, 0.5)';
     }, {passive: true});
+
+    item.addEventListener('touchend', () => {
+        item.style.transform = 'scale(1)';
+        item.style.boxShadow = '0px 4px 14px rgba(0, 0, 0, 0.25)';
+    });
 });

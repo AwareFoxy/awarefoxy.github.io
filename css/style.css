@@ -6,8 +6,8 @@ body {
   align-items: center;
   height: 100vh;
   overflow: hidden;
-  background: #222;
-  animation: fadeInAnimation 1.5s ease-in-out;
+  background: linear-gradient(135deg, #6e8efa, #c879ff);
+  animation: fadeInAnimation 2s ease-in-out;
 }
 
 @keyframes fadeInAnimation {
@@ -17,6 +17,11 @@ body {
 
 #container {
   max-width: 95%;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 #social-links {
@@ -30,15 +35,24 @@ body {
   color: white;
   background-color: #333;
   padding: 10px 20px;
-  margin: 10px; 
+  margin: 10px;
   border-radius: 5px;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
   position: relative;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.social-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.45);
 }
 
 #video {
   text-align: center;
   margin-top: 20px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 @media (max-width: 600px) {
