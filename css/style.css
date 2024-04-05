@@ -81,4 +81,11 @@ h1 {
     margin: 5px;
     padding: 8px 12px;
   }
+
+  #toggle-theme {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 10px;
+  }
 }
