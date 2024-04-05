@@ -6,8 +6,8 @@
   --light-text-color: #000;
   --light-button-bg: #007bff;
   --light-button-hover-bg: #0056b3;
-  --dark-gradient-start: #0f0c29;
-  --dark-gradient-end: #302b63;
+  --dark-gradient-start: #08005d;
+  --dark-gradient-end: #2f0139;
   --dark-container-bg: rgba(0, 0, 0, 0.8);
   --dark-text-color: #fff;
   --dark-button-bg: #555;
@@ -21,7 +21,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   font-family: sans-serif;
   height: 100vh;
   background: linear-gradient(135deg, var(--light-gradient-start), var(--light-gradient-end));
@@ -58,19 +57,16 @@ body {
 }
 
 body.dark-theme {
-  transition: var(--transition-time);
   background: linear-gradient(135deg, var(--dark-gradient-start), var(--dark-gradient-end));
   color: var(--dark-text-color);
 }
 
 body.dark-theme #container {
-  transition: var(--transition-time);
   background: var(--dark-container-bg);
   color: var(--dark-text-color);
 }
 
 body.dark-theme .social-link {
-  transition: var(--transition-time);
   background-color: var(--dark-button-bg);
   color: var(--dark-text-color);
 }
