@@ -50,3 +50,45 @@ window.onload = function() {
         document.body.classList.add("dark-theme");
     }
 };
+
+particlesJS('particles-js', {
+    particles: {
+        number: {
+            value: 150,
+        },
+        color: {
+            value: "#ffffff"
+        },
+        shape: {
+            type: "circle"
+        },
+        opacity: {
+            value: 0.5,
+        },
+        size: {
+            value: 3,
+            random: true
+        },
+        line_linked: {
+            enable: true,
+            distance: 150
+        },
+        move: {
+            enable: true,
+            speed: 6
+        }
+    },
+    interactivity: {
+        events: {
+            onhover: {
+                enable: true,
+                mode: "repulse"
+            },
+            onclick: {
+                enable: true,
+                mode: "push"
+            }
+        }
+    },
+    retina_detect: true
+});
