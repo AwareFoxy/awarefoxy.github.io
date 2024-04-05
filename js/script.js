@@ -45,56 +45,25 @@ document.getElementById('discord-copy-trigger').addEventListener('click', functi
     }, 2000);
 });
 
+window.matchMedia('(prefers-color-scheme: dark)').addListener(function(e) {
+    if(e.matches) {
+        document.body.classList.add("dark-theme");
+        setCookie("theme", "dark", 30);
+    } else {
+        document.body.classList.remove("dark-theme");
+        setCookie("theme", "light", 30);
+    }
+});
+
 window.onload = function() {
-    if (getCookie("theme") === "dark") {
+    var userThemePreference = getCookie("theme");
+    if(userThemePreference) {
+        if(userThemePreference === "dark") {
+            document.body.classList.add("dark-theme");
+        } else if(userThemePreference === "light") {
+            document.body.classList.remove("dark-theme");
+        }
+    } else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add("dark-theme");
     }
 };
-
-particlesJS('particles-js', {
-    particles: {
-        number: {
-            value: 100,
-        },
-        color: {
-            value: "#ffffff"
-        },
-        shape: {
-            type: "circle"
-        },
-        opacity: {
-            value: 0.5,
-        },
-        size: {
-            value: 3,
-            random: true
-        },
-        line_linked: {
-            enable: true,
-            distance: 150
-        },
-        move: {
-            enable: true,
-            speed: 3
-        }
-    },
-    interactivity: {
-        events: {
-            onhover: {
-                enable: true,
-                mode: "repulse"
-            },
-            onclick: {
-                enable: true,
-                mode: "push"
-            }
-        },
-        modes: {
-            repulse: {
-                distance: 100,
-                duration: 0.4
-            }
-        }
-    },
-    retina_detect: true
-});
