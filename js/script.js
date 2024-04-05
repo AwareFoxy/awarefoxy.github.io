@@ -41,7 +41,7 @@ document.getElementById('discord-copy-trigger').addEventListener('click', functi
     document.body.removeChild(dummy);
     tooltipTextElement.textContent = 'Скопировано!';
     setTimeout(function() {
-        tooltipTextElement.textContent = 'Копировать id';
+        tooltipTextElement.textContent = 'Копировать';
     }, 2000);
 });
 
