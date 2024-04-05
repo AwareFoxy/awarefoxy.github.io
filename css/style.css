@@ -24,6 +24,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: sans-serif;
   height: 100vh;
   background: linear-gradient(135deg, #a1c4fd, #c2e9fb);}
 
