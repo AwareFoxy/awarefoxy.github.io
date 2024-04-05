@@ -6,7 +6,7 @@ document.querySelectorAll('.social-link').forEach(item => {
 
     item.addEventListener('mouseleave', () => {
         item.style.transform = 'scale(1)';
-        item.style.boxShadow = '0px 4px 14px rgba(0, 0, 0, 0.25)';
+        item.style.boxShadow = 'none';
     });
 
     item.addEventListener('touchstart', () => {
@@ -16,6 +16,6 @@ document.querySelectorAll('.social-link').forEach(item => {
 
     item.addEventListener('touchend', () => {
         item.style.transform = 'scale(1)';
-        item.style.boxShadow = '0px 4px 14px rgba(0, 0, 0, 0.25)';
+        item.style.boxShadow = 'none';
     });
 });
