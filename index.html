@@ -5,8 +5,18 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Мои Ссылки</title>
     <link href="css/style.css" rel="stylesheet">
+    <script>
+        window.onload = function() {
+            if (getCookie("theme") === "dark") {
+                document.body.classList.add("dark-theme");
+            }
+        };
+    </script>
 </head>
 <body>
+<div id="theme-toggle-wrapper">
+    <button id="toggle-theme">Сменить тему</button>
+</div>
 <div id="container">
     <h1>Мои Социальные Ссылки</h1>
     <div id="social-links">

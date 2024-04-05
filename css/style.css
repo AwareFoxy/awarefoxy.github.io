@@ -6,8 +6,7 @@ body {
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  background: linear-gradient(135deg, #70e1f5, #ffd194);
-}
+  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);}
 
 #container {
   text-align: center;
@@ -61,5 +60,46 @@ h1 {
   .social-link {
     margin: 5px;
     padding: 8px 12px;
+  }
+}
+
+body.dark-theme {
+  background: linear-gradient(135deg, #232526, #414345);
+}
+
+body.dark-theme #container {
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
+
+body.dark-theme .social-link {
+  background-color: #555;
+  color: #ddd;
+}
+
+body.dark-theme #onlyfans {
+  background-color: #ff1493;
+  box-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
+}
+
+#theme-toggle-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+}
+
+#toggle-theme {
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+@media (max-width: 600px) {
+  #toggle-theme {
+    padding: 4px 8px;
   }
 }
