@@ -1,27 +1,17 @@
 :root {
   --transition-time: 0.5s;
-}
-
-body.dark-theme {
-  transition: var(--transition-time);
-  background: linear-gradient(135deg, #232526, #414345);
-}
-
-body.dark-theme #container {
-  transition: var(--transition-time);
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-}
-
-body.dark-theme .social-link {
-  transition: var(--transition-time);
-  background-color: #555;
-  color: #ddd;
-}
-
-body.dark-theme #onlyfans {
-  background-color: #ff1493;
-  box-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
+  --light-gradient-start: #a1c4fd;
+  --light-gradient-end: #c2e9fb;
+  --light-container-bg: rgba(255, 255, 255, 0.8);
+  --light-text-color: #000;
+  --light-button-bg: #007bff;
+  --light-button-hover-bg: #0056b3;
+  --dark-gradient-start: #232526;
+  --dark-gradient-end: #414345;
+  --dark-container-bg: rgba(0, 0, 0, 0.8);
+  --dark-text-color: #fff;
+  --dark-button-bg: #555;
+  --dark-button-hover-bg: #333;
 }
 
 body {
@@ -34,7 +24,8 @@ body {
   flex-direction: column;
   font-family: sans-serif;
   height: 100vh;
-  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+  background: linear-gradient(135deg, var(--light-gradient-start), var(--light-gradient-end));
+  color: var(--light-text-color);
 }
 
 #container {
@@ -42,9 +33,10 @@ body {
   text-align: center;
   padding: 20px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--light-container-bg);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(8.5px);
+  color: var(--light-text-color);
 }
 
 .social-link {
@@ -53,7 +45,7 @@ body {
   align-items: center;
   text-decoration: none;
   color: #fff;
-  background-color: #007bff;
+  background-color: var(--light-button-bg);
   padding: 10px 15px;
   margin: 10px;
   border-radius: 20px;
@@ -61,8 +53,30 @@ body {
 }
 
 .social-link:hover {
-  background-color: #0056b3;
+  background-color: var(--light-button-hover-bg);
   transform: translateY(-3px);
+}
+
+body.dark-theme {
+  transition: var(--transition-time);
+  background: linear-gradient(135deg, var(--dark-gradient-start), var(--dark-gradient-end));
+  color: var(--dark-text-color);
+}
+
+body.dark-theme #container {
+  transition: var(--transition-time);
+  background: var(--dark-container-bg);
+  color: var(--dark-text-color);
+}
+
+body.dark-theme .social-link {
+  transition: var(--transition-time);
+  background-color: var(--dark-button-bg);
+  color: var(--dark-text-color);
+}
+
+body.dark-theme .social-link:hover {
+  background-color: var(--dark-button-hover-bg);
 }
 
 #onlyfans {
