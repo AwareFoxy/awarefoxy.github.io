@@ -1,0 +1,75 @@
+:root {
+    --background-light: #fff;
+    --background-dark: #333;
+    --text-color-light: #444;
+    --text-light: #333;
+    --text-dark: #f4f4f4;
+    --container-shadow-light: 0 0 10px #ccc;
+    --container-shadow-dark: 0 0 10px #222;
+    --code-background-light: #eee;
+    --code-background-dark: #555;
+    --code-border-left-color: #f36d33;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: var(--background-light);
+    color: var(--text-color-light);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-theme {
+    color: var(--text-dark);
+}
+
+.content {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.dark-theme .content {
+    background-color: #424242;
+}
+
+.container {
+    width: 85%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+    background: var(--background-light);
+    border-radius: 5px;
+    box-shadow: var(--container-shadow-light);
+}
+
+body.dark-theme .container {
+    background: var(--background-dark);
+    box-shadow: var(--container-shadow-dark);
+}
+
+h2, h3 {
+    color: var(--text-color-light);
+}
+
+body.dark-theme h2, body.dark-theme h3 {
+    color: var(--text-light);
+}
+
+code {
+    display: block;
+    padding: 10px;
+    margin: 10px 0;
+    background: var(--code-background-light);
+    border-left: 3px solid var(--code-border-left-color);
+    color: var(--text-light);
+    font-family: Consolas, "Courier New", Courier, monospace;
+}
+
+body.dark-theme code {
+    background: var(--code-background-dark);
+    color: var(--text-dark);
+}

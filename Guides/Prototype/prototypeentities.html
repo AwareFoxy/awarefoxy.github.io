@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прототипы</title>
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Полное написание <code>type: entity</code> в прототипе</h2>
+    <code>
+        - type: entity<br>
+        &ensp;&ensp;id: MyItem<br>
+        &ensp;&ensp;parent: [ parent1, parent2 ]<br>
+        &ensp;&ensp;name: "my item"<br>
+        &ensp;&ensp;description: "my best item"<br>
+        &ensp;&ensp;suffix: "IT IS MY ITEM"<br>
+        &ensp;&ensp;abstract: false<br>
+        &ensp;&ensp;noSpawn: false<br>
+        &ensp;&ensp;components:<br>
+        &ensp;&ensp;- type: ...<br>
+    </code>
+
+    <h2>ФОРМАТИРОВАНИЕ ПРОТОТИПОВ ОБЯЗАТЕЛЬНО!</h2>
+    <h2>Разбор всех типов переменных</h2>
+
+    <div>
+        <h3><code>id</code></h3>
+        <p>
+            Уникальный идентификатор, или имя, прототипа в коде. Используется для идентификации прототипа внутри игры.<br>
+            Пример использования: <code>id: MyItem</code><br>
+            Пример использования: <code>id: ClothingBackpackDuffelSyndicateEliteHardsuitBundle</code><br>
+            Пример использования: <code>id: WeaponPistol</code><br>
+            Пример использования: <code>id: ClothingBackpackBundle</code><br>
+        </p>
+    </div>
+
+    <div>
+        <h3><code>parent</code></h3>
+        <p>
+            Родитель прототипа, определяющий отношения наследования компонентов. Может быть одним родителем или массивом родителей, указанным в квадратных скобках.<br>
+            Пример указания одного родителя: <code>parent: parent1</code><br>
+            Пример указания одного родителя: <code>parent: WeaponPistol</code><br>
+            Пример указания одного родителя: <code>parent: ClothingBackpackDuffelSyndicateEliteHardsuitBundle</code><br>
+            Пример указания нескольких родителей: <code>parent: [ parent1, parent2 ]</code><br>
+            Пример указания нескольких родителей: <code>parent: [ parent214, parent222, parent237, parent2158 ]</code><br>
+        </p>
+    </div>
+
+    <div>
+        <h3><code>name</code></h3>
+        <p>
+            Имя предмета. Может быть любым текстом. Если имя содержит специфичные символы, используйте кавычки.<br>
+            Пример использования: <code>name: "my item"</code><br>
+            Пример использования: <code>name: "not my item"</code><br>
+            Пример использования: <code>name: item</code><br>
+        </p>
+    </div>
+
+    <div>
+        <h3><code>description</code></h3>
+        <p>
+            Описание предмета при его осмотре. Работает аналогично имени предмета.<br>
+            Пример использования: <code>description: "my best item"</code><br>
+            Пример использования: <code>description: "NEKO FUCK U"</code><br>
+            Пример использования: <code>description: Ok</code><br>
+        </p>
+    </div>
+
+    <div>
+        <h3><code>suffix</code></h3>
+        <p>
+            Суффикс предмета, отображаемый при спавне через меню. Работает аналогично имени и описанию.<br>
+            Пример использования: <code>suffix: "my best suffix"</code><br>
+            Пример использования: <code>suffix: suffix</code><br>
+            Пример использования: <code>suffix: weapon</code><br>
+        </p>
+    </div>
+
+    <div>
+        <h3><code>abstract</code></h3>
+        <p>
+            Определяет, является ли прототип абстрактным. Если true, прототип не может быть заспавнен напрямую. В спавн меню не отображается.<br>
+            abstract в основе своей используется для более удобной работы с заимствованием через parent.
+            Пример использования: <code>abstract: false</code><br>
+            Пример использования: <code>abstract: true</code><br>
+        </p>
+    </div>
+
+    <div>
+        <h3><code>noSpawn</code></h3>
+        <p>
+            Определяет, отображается ли прототип в спавн меню. Если true, прототип не отображается, но его можно заспавнить через команду.<br>
+            Пример использования: <code>noSpawn: false</code><br>
+            Пример использования: <code>noSpawn: true</code><br>
+        </p>
+    </div>
+
+    <div>
+        <h3><code>components</code></h3>
+        <p>
+            Блок, содержащий компоненты для энтити. Компоненты добавляют функциональность прототипу. Список компонентов будет предоставлен позже на отдельной странице.<br>
+            Примера не будет, смотрите выше<br>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
