@@ -364,11 +364,11 @@ function compileDocument() {
 
     const futureDate = new Date();
     futureDate.setFullYear(futureDate.getFullYear() + 1000);
-    const dateString = `${futureDate.getDate()}.${futureDate.getMonth() + 1}.${futureDate.getFullYear()}`;
+    const formattedDate = `${futureDate.getDate()}.${futureDate.getMonth() + 1}.${futureDate.getFullYear()}`;
 
     compiledDoc = compiledDoc.replaceAll("{compilerName}", compilerName);
     compiledDoc = compiledDoc.replaceAll("{compilerPosition}", compilerPosition);
-    compiledDoc = compiledDoc.replaceAll("{date}", dateString);
+    compiledDoc = compiledDoc.replaceAll("{date}", formattedDate);
 
     document.getElementById("compiledDocument").value = compiledDoc;
 }
