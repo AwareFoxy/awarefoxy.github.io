@@ -334,6 +334,10 @@ const docs = {
 }; // {compilerName} - имя {compilerPosition} - должность {date} - дата
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    filterDocuments(); // Initial call to populate documents based on department
+});
+
 function filterDocuments() {
     const department = document.getElementById("departmentSelect").value;
     const documentSelect = document.getElementById("documentSelect");
@@ -374,7 +378,14 @@ function compileDocument() {
 }
 
 function copyToClipboard() {
-    const compiledDocument = document.getElementById("compiledDocument");
-    compiledDocument.select();
-    document.execCommand("copy");
+    const textarea = document.getElementById('compiledDocument');
+    textarea.select();
+    document.execCommand('copy');
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(textarea.value).then(function() {
+            console.log('Async: Copying to clipboard was successful!');
+        }, function(err) {
+            console.error('Async: Could not copy text: ', err);
+        });
+    }
 }

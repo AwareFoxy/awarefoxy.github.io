@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мечта Бюрократа</title>
     <link href="css/bureaucracy.css" rel="stylesheet">
-
 </head>
 <body>
-
 <div class="container">
     <select id="departmentSelect" onchange="filterDocuments()">
         <option value="all">Всё</option>
@@ -23,7 +21,6 @@
         <option value="CentCom">Заключения и решения</option>
     </select>
     <select id="documentSelect">
-
     </select>
     <input type="text" id="compilerName" placeholder="Имя">
     <input type="text" id="compilerPosition" placeholder="Должность">
@@ -31,8 +28,6 @@
     <textarea id="compiledDocument" placeholder="Ваш документ появится тут..."></textarea>
     <button id="copyButton" onclick="copyToClipboard()">Скопировать</button>
 </div>
-
-
 <script src="js/bureaucracy.js"></script>
 </body>
 </html>
