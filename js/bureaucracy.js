@@ -339,13 +339,13 @@ function filterDocuments() {
     const documentSelect = document.getElementById("documentSelect");
     documentSelect.innerHTML = '';
 
-    let docsToRender = []; // Сначала создаем пустой массив для документов
-    if(department === 'all') { // Если выбрано "все отделы"
+    let docsToRender = [];
+    if(department === 'all') {
         Object.keys(documents).forEach(dep => {
-            docsToRender = [...docsToRender, ...documents[dep]]; // Собираем все документы
+            docsToRender = [...docsToRender, ...documents[dep]];
         });
     } else {
-        docsToRender = documents[department]; // Или только документы выбранного отдела
+        docsToRender = documents[department];
     }
 
     docsToRender.forEach(doc => {
@@ -360,23 +360,21 @@ function compileDocument() {
     const docKey = document.getElementById("documentSelect").value;
     const compilerName = document.getElementById("compilerName").value;
     const compilerPosition = document.getElementById("compilerPosition").value;
-    let compiledDoc = docs[docKey]; // Получаем шаблон по ключу документа
+    let compiledDoc = docs[docKey];
 
     const futureDate = new Date();
     futureDate.setFullYear(futureDate.getFullYear() + 1000);
-    const formattedDate = `${futureDate.getDate()}.${futureDate.getMonth() + 1}.${futureDate.getFullYear()}`;
+    const dateString = `${futureDate.getDate()}.${futureDate.getMonth() + 1}.${futureDate.getFullYear()}`;
 
-    compiledDoc = compiledDoc.replaceAll("{compilerName}", compilerName); // Заменяем плейсхолдеры
+    compiledDoc = compiledDoc.replaceAll("{compilerName}", compilerName);
     compiledDoc = compiledDoc.replaceAll("{compilerPosition}", compilerPosition);
     compiledDoc = compiledDoc.replaceAll("{date}", dateString);
 
-    document.getElementById("compiledDocument").value = compiledDoc; // Вывод скомпилированного документа
+    document.getElementById("compiledDocument").value = compiledDoc;
 }
 
 function copyToClipboard() {
     const compiledDocument = document.getElementById("compiledDocument");
-    compiledDocument.select(); // Выделение скомпилированного текста
-    document.execCommand("copy"); // Копирование в буфер обмена
+    compiledDocument.select();
+    document.execCommand("copy");
 }
-
-filterDocuments();
