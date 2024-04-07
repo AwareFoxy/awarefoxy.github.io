@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мечта Бюрократа</title>
+    <link href="css/bureaucracy.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container">
+    <select id="departmentSelect" onchange="filterDocuments()">
+        <option value="all">Всё</option>
+        <option value="Otcheti">Отчёты</option>
+        <option value="Applications">Заявления</option>
+        <option value="Requests">Запросы</option>
+        <option value="Medical">Медицинский Отдел</option>
+        <option value="Engineering">Инженерный Отдел</option>
+        <option value="RND">Научно-Исследовательский Отдел</option>
+        <option value="Cargo">Отдел Снабжения</option>
+        <option value="Service">Сервисный Отдел</option>
+        <option value="CentCom">Связь с ЦентКомом</option>
+    </select>
+    <select id="documentSelect">
+
+    </select>
+    <input type="text" id="compilerName" placeholder="Имя">
+    <input type="text" id="compilerPosition" placeholder="Должность">
+    <button onclick="compileDocument()">Сделать документ!</button>
+    <textarea id="compiledDocument" placeholder="Ваш документ появится тут..."></textarea>
+    <button id="copyButton" onclick="copyToClipboard()">Скопировать</button>
+</div>
+
+
+<script src="js/bureaucracy.js"></script>
+</body>
+</html>
