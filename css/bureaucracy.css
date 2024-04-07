@@ -12,8 +12,6 @@ body {
     padding: 20px;
     background-color: #333;
     border-radius: 8px;
-    height: auto;
-    min-height: 500px;
 }
 select, input[type="text"], button, textarea {
     width: calc(100% - 24px);
@@ -35,10 +33,12 @@ button:hover {
     background-color: #1565c0;
 }
 textarea {
-    height: 200px;
     resize: vertical;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    height: auto;
+    min-height: 500px;
 }
+
 #copyButton {
     background-color: #4CAF50;
 }
