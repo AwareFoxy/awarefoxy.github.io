@@ -331,9 +331,6 @@ const docs = {
 Обязуюсь заплатить штраф, установленный условиями расторжения срочного/бессрочного контракта, на станции Центрального Командования.
 =============================================
                             [italic]Место для печатей[/italic]`,
-    markDoc2: `Marketing Document 2 content.\nCompiled by {compilerName}, {compilerPosition}.\nDate: {date}`,
-    salesDoc1: `Sales Document 1 content.\nCompiled by {compilerName}, {compilerPosition}.\nDate: {date}`,
-    salesDoc2: `Sales Document 2 content.\nCompiled by {compilerName}, {compilerPosition}.\nDate: {date}`,
 }; // {compilerName} - имя {compilerPosition} - должность {date} - дата
 
 
@@ -365,9 +362,9 @@ function compileDocument() {
     const compilerPosition = document.getElementById("compilerPosition").value;
     let compiledDoc = docs[docKey]; // Получаем шаблон по ключу документа
 
-    const currentDate = new Date();
-    currentDate.setFullYear(currentDate.getFullYear() + 1000); // Увеличиваем дату на 1000 лет как пример
-    const dateString = currentDate.toDateString();
+    const futureDate = new Date();
+    futureDate.setFullYear(futureDate.getFullYear() + 1000);
+    const formattedDate = `${futureDate.getDate()}.${futureDate.getMonth() + 1}.${futureDate.getFullYear()}`;
 
     compiledDoc = compiledDoc.replaceAll("{compilerName}", compilerName); // Заменяем плейсхолдеры
     compiledDoc = compiledDoc.replaceAll("{compilerPosition}", compilerPosition);
@@ -382,4 +379,4 @@ function copyToClipboard() {
     document.execCommand("copy"); // Копирование в буфер обмена
 }
 
-filterDocuments(); // Инициализация при загрузке
+filterDocuments();
