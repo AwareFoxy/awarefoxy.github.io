@@ -10,20 +10,13 @@
 <div class="container">
     <select id="departmentSelect" onchange="filterDocuments()">
         <option value="all">Всё</option>
-        <option value="Otcheti">Отчёты</option>
-        <option value="Applications">Заявления</option>
-        <option value="Requests">Запросы и обращения</option>
-        <option value="Medical">Жалобы</option>
-        <option value="Engineering">Разрешения</option>
-        <option value="RND">Приказы и распоряжения</option>
-        <option value="Cargo">Заказы</option>
-        <option value="Service">Свидетельства</option>
-        <option value="CentCom">Заключения и решения</option>
+
     </select>
     <select id="documentSelect">
     </select>
     <input type="text" id="compilerName" placeholder="Имя">
     <input type="text" id="compilerPosition" placeholder="Должность">
+    <input type="text" id="stationCode" placeholder="Код станции">
     <button onclick="compileDocument()">Сделать документ!</button>
     <textarea id="compiledDocument" placeholder="Ваш документ появится тут..."></textarea>
     <button id="copyButton" onclick="copyToClipboard()">Скопировать</button>
