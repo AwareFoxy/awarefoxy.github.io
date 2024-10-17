@@ -1,36 +1,40 @@
+function createDocument(key, label) {
+    return { key, label };
+}
+
 const documents = {
     Otcheti: [
-        { key: "Report1", label: "Отчёт о ситуации" },
-        { key: "Report2", label: "Отчёт об устранении нарушений" },
-        { key: "Report3", label: "Отчёт о работе отдела" },
-        { key: "Report4", label: "Отчёт о работе сотрудника" },
-        { key: "Report5", label: "Отчёт о Собрании Глав" },
-        { key: "Report6", label: "Отчёт о внутреннем расследовании" },
-        { key: "Report7", label: "Отчёт о техническом состоянии" },
-        { key: "Report8", label: "Отчёт об изучении объекта" },
-        { key: "Report9", label: "Отчёт об эксперименте" },
-        { key: "Report10", label: "Отчёт об утилизации" },
+        createDocument("Report1", "Отчёт о ситуации"),
+        createDocument("Report2", "Отчёт об устранении нарушений"),
+        createDocument("Report3", "Отчёт о работе отдела"),
+        createDocument("Report4", "Отчёт о работе сотрудника"),
+        createDocument("Report5", "Отчёт о Собрании Глав"),
+        createDocument("Report6", "Отчёт о внутреннем расследовании"),
+        createDocument("Report7", "Отчёт о техническом состоянии"),
+        createDocument("Report8", "Отчёт об изучении объекта"),
+        createDocument("Report9", "Отчёт об эксперименте"),
+        createDocument("Report10", "Отчёт об утилизации"),
     ],
     Applications: [
-        { key: "Application1", label: "Заявление о назначении на ВрИО" },
-        { key: "Application2", label: "Заявление о трудоустройстве" },
-        { key: "Application3", label: "Заявление на получение доступа" },
-        { key: "Application4", label: "Заявление на получение снаряжения" },
-        { key: "Application5", label: "Заявление об увольнении" },
+        createDocument("Application1", "Заявление о назначении на ВрИО"),
+        createDocument("Application2", "Заявление о трудоустройстве"),
+        createDocument("Application3", "Заявление на получение доступа"),
+        createDocument("Application4", "Заявление на получение снаряжения"),
+        createDocument("Application5", "Заявление об увольнении"),
     ],
     Requests: [
-        { key: "Request1", label: "Обращение" },
-        { key: "Request2", label: "Запрос эвакуационного шаттла" },
-        { key: "Request3", label: "Запрос регистрации шаттла" },
-        { key: "Request4", label: "Запрос на вызов членов ЦК, ДСО" },
-        { key: "Request5", label: "Запрос установления уровня угрозы" },
-        { key: "Request6", label: "Запрос на изменение заработной платы" },
-        { key: "Request7", label: "Запрос внеперечневого трудоустройства" },
-        { key: "Request8", label: "Запрос повышения" },
-        { key: "Request9", label: "Запрос предоставления документов" },
-        { key: "Request10", label: "Запрос на проведение эвтаназии" },
-        { key: "Request11", label: "Запрос на проведение строительных работ" },
-        { key: "Request12", label: "Запрос на проведение модернизации" },
+        createDocument("Request1", "Обращение"),
+        createDocument("Request2", "Запрос эвакуационного шаттла"),
+        createDocument("Request3", "Запрос регистрации шаттла"),
+        createDocument("Request4", "Запрос на вызов членов ЦК, ДСО"),
+        createDocument("Request5", "Запрос установления уровня угрозы"),
+        createDocument("Request6", "Запрос на изменение заработной платы"),
+        createDocument("Request7", "Запрос внеперечневого трудоустройства"),
+        createDocument("Request8", "Запрос повышения"),
+        createDocument("Request9", "Запрос предоставления документов"),
+        createDocument("Request10", "Запрос на проведение эвтаназии"),
+        createDocument("Request11", "Запрос на проведение строительных работ"),
+        createDocument("Request12", "Запрос на проведение модернизации"),
     ]
 };
 
@@ -580,14 +584,9 @@ function filterDocuments() {
     const documentSelect = document.getElementById("documentSelect");
     documentSelect.innerHTML = '';
 
-    let docsToRender = [];
-    if(department === 'all') {
-        Object.keys(documents).forEach(dep => {
-            docsToRender = [...docsToRender, ...documents[dep]];
-        });
-    } else {
-        docsToRender = documents[department];
-    }
+    let docsToRender = department === 'all' ? 
+        Object.values(documents).flat() : 
+        documents[department];
 
     docsToRender.forEach(doc => {
         const option = document.createElement("option");
@@ -597,21 +596,33 @@ function filterDocuments() {
     });
 }
 
+function getFormattedDate() {
+    const futureDate = new Date();
+    futureDate.setFullYear(futureDate.getFullYear() + 1000);
+    return `${futureDate.getDate()}.${futureDate.getMonth() + 1}.${futureDate.getFullYear()}`;
+}
+
+function replacePlaceholders(template, replacements) {
+    return Object.keys(replacements).reduce((acc, key) => {
+        return acc.replaceAll(`{${key}}`, replacements[key]);
+    }, template);
+}
+
 function compileDocument() {
     const docKey = document.getElementById("documentSelect").value;
     const compilerName = document.getElementById("compilerName").value;
     const compilerPosition = document.getElementById("compilerPosition").value;
     const stationCode = document.getElementById("stationCode").value;
+
     let compiledDoc = docs[docKey];
+    const formattedDate = getFormattedDate();
 
-    const futureDate = new Date();
-    futureDate.setFullYear(futureDate.getFullYear() + 1000);
-    const formattedDate = `${futureDate.getDate()}.${futureDate.getMonth() + 1}.${futureDate.getFullYear()}`;
-
-    compiledDoc = compiledDoc.replaceAll("{compilerName}", compilerName);
-    compiledDoc = compiledDoc.replaceAll("{compilerPosition}", compilerPosition);
-    compiledDoc = compiledDoc.replaceAll("{date}", formattedDate);
-    compiledDoc = compiledDoc.replaceAll("{stationCode}", stationCode);
+    compiledDoc = replacePlaceholders(compiledDoc, {
+        compilerName,
+        compilerPosition,
+        date: formattedDate,
+        stationCode
+    });
 
     document.getElementById("compiledDocument").value = compiledDoc;
 }
