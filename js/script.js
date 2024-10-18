@@ -1,41 +1,53 @@
-document.getElementById('toggle-theme').addEventListener('click', function() {
-    document.body.classList.toggle("dark-theme");
-    let theme = document.body.classList.contains("dark-theme") ? "dark" : "light";
-    setCookie("theme", theme, 30);
-});
+const CookieManager = {
+    setCookie: (cookieName, cookieValue, expiryDays) => {
+        const date = new Date();
+        date.setTime(date.getTime() + (expiryDays * 24 * 60 * 60 * 1000));
+        document.cookie = `${cookieName}=${cookieValue}; expires=${date.toUTCString()}; path=/`;
+    },
 
-function setCookie(cookieName, cookieValue, expiryDays) {
-    var date = new Date();
-    date.setTime(date.getTime() + (expiryDays*24*60*60*1000));
-    document.cookie = `${cookieName}=${cookieValue}; expires=${date.toUTCString()}; path=/`;
-}
-
-function getCookie(cookieName) {
-    var name = cookieName + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i].trim();
-        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    getCookie: (cookieName) => {
+        const name = `${cookieName}=`;
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i].trim();
+            if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
+        }
+        return "";
     }
-    return "";
-}
+};
 
-document.getElementById('discord-copy-trigger').addEventListener('click', function() {
-    var text = document.getElementById('discord-id').dataset.tooltipText;
-    var dummy = document.createElement('input'), textToCopy = text;
-    document.body.appendChild(dummy);
-    dummy.value = textToCopy;
-    dummy.select();
-    document.execCommand('copy');
-    document.body.removeChild(dummy);
-    alert("Скопировано: " + textToCopy);
-});
+const applyTheme = (theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
+};
 
-window.addEventListener('load', function() {
-    var theme = getCookie("theme");
-    if(theme) {
-        if(theme === "dark") document.body.classList.add("dark-theme");
-        else document.body.classList.remove("dark-theme");
+const switchTheme = () => {
+    const currentTheme = CookieManager.getCookie('theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    applyTheme(newTheme);
+    CookieManager.setCookie('theme', newTheme, 365);
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = CookieManager.getCookie('theme') || 'light';
+    applyTheme(savedTheme);
+
+    const themeToggleButton = document.getElementById('themeToggleButton');
+    if (themeToggleButton) {
+        themeToggleButton.addEventListener('click', switchTheme);
+    }
+
+    const discordCopyTrigger = document.getElementById('discord-copy-trigger');
+    if (discordCopyTrigger) {
+        discordCopyTrigger.addEventListener('click', () => {
+            const text = document.getElementById('discord-id').dataset.tooltipText;
+            const dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            alert(`Скопировано: ${text}`);
+        });
     }
 });
