@@ -1,17 +1,15 @@
 const CookieManager = {
-    setCookie: (cookieName, cookieValue, expiryDays) => {
+    setCookie: (name, value, days) => {
         const date = new Date();
-        date.setTime(date.getTime() + (expiryDays * 24 * 60 * 60 * 1000));
-        document.cookie = `${cookieName}=${cookieValue}; expires=${date.toUTCString()}; path=/`;
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
     },
 
-    getCookie: (cookieName) => {
-        const name = `${cookieName}=`;
-        const decodedCookie = decodeURIComponent(document.cookie);
-        const ca = decodedCookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i].trim();
-            if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
+    getCookie: (name) => {
+        const cookies = document.cookie.split(';');
+        for (const cookie of cookies) {
+            const [key, value] = cookie.trim().split('=');
+            if (key === name) return value;
         }
         return "";
     }
@@ -19,10 +17,12 @@ const CookieManager = {
 
 const applyTheme = (theme) => {
     document.documentElement.setAttribute('data-theme', theme);
+    const themeToggleButton = document.getElementById('themeToggleButton');
+    themeToggleButton.textContent = theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
 };
 
 const switchTheme = () => {
-    const currentTheme = CookieManager.getCookie('theme');
+    const currentTheme = CookieManager.getCookie('theme') || 'light';
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     applyTheme(newTheme);
     CookieManager.setCookie('theme', newTheme, 365);
@@ -32,22 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = CookieManager.getCookie('theme') || 'light';
     applyTheme(savedTheme);
 
-    const themeToggleButton = document.getElementById('themeToggleButton');
-    if (themeToggleButton) {
-        themeToggleButton.addEventListener('click', switchTheme);
-    }
+    document.getElementById('themeToggleButton').addEventListener('click', switchTheme);
 
-    const discordCopyTrigger = document.getElementById('discord-copy-trigger');
-    if (discordCopyTrigger) {
-        discordCopyTrigger.addEventListener('click', () => {
-            const text = document.getElementById('discord-id').dataset.tooltipText;
-            const dummy = document.createElement('input');
-            document.body.appendChild(dummy);
-            dummy.value = text;
-            dummy.select();
-            document.execCommand('copy');
-            document.body.removeChild(dummy);
-            alert(`Скопировано: ${text}`);
+    document.getElementById('discord-copy-trigger').addEventListener('click', () => {
+        const discordId = document.getElementById('discord-id').dataset.tooltipText;
+        navigator.clipboard.writeText(discordId).then(() => {
+            alert(`Скопировано: ${discordId}`);
+        }).catch(() => {
+            alert("Не удалось скопировать.");
         });
-    }
+    });
 });
