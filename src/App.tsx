@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Moon, Sun, Steam, Github, Copy, Video, FileText } from 'lucide-react';
+import { Moon, Sun, Gamepad2, Github, Copy, Video } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
@@ -64,7 +64,7 @@ function App() {
               asChild
             >
               <a href="https://steamcommunity.com/id/awarefoxy/" target="_blank" rel="noopener noreferrer">
-                <Steam className="h-5 w-5" />
+                <Gamepad2 className="h-5 w-5" />
                 Steam
               </a>
             </Button>
@@ -77,17 +77,6 @@ function App() {
               <a href="https://github.com/AwareFoxy" target="_blank" rel="noopener noreferrer">
                 <Github className="h-5 w-5" />
                 Github
-              </a>
-            </Button>
-
-            <Button
-              variant="outline"
-              className="w-full justify-start gap-2 text-lg h-14"
-              asChild
-            >
-              <a href="/bureaucracy.html">
-                <FileText className="h-5 w-5" />
-                Bureaucracy for SS14
               </a>
             </Button>
 
@@ -126,7 +115,7 @@ function App() {
               controls 
               className="w-full rounded-lg shadow-lg"
             >
-              <source src="files/Singa.mp4" type="video/mp4" />
+              <source src="public/files/Singa.mp4" type="video/mp4" />
               Your browser does not support video playback.
             </video>
           </div>
