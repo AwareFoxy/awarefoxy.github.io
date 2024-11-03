@@ -2,32 +2,36 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>My links</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Links</title>
+    <link href="https://cdn.jsdelivr.net/npm/@gravity-ui/uikit@latest/dist/uikit.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-<div id="theme-toggle-wrapper" style="position: fixed; top: 0; right: 0; margin: 10px;">
-    <button id="themeToggleButton" style="padding: 10px 20px; border-radius: 20px; border: none; background-color: #007bff; color: #fff; cursor: pointer; transition: background-color 0.3s;">for the god change theme to dark one</button>
-</div>
-<div id="container">
-    <h1>My link</h1>
-    <div id="social-links">
-        <a class="social-link" href="https://steamcommunity.com/id/awarefoxy/" id="steam">Steam</a>
-        <a class="social-link" href="https://github.com/AwareFoxy" id="github">Github</a>
-        <a class="social-link" href="/bureaucracy.html" id="bureaucracy">Burecruacy for SS14</a>
-        <div class="social-link" id="discord-copy-trigger">Discord
-            <span class="tooltip-text" id="discord-id" data-tooltip-text="awarefoxy">Copy</span>
+    <div class="g-theme-toggle-wrapper g-position-fixed g-top-0 g-end-0 g-m-2">
+        <button id="themeToggleButton" class="g-button g-button_primary g-rounded-pill">
+            Switch Theme
+        </button>
+    </div>
+    <div id="container">
+        <h1 class="g-text-title-1">My Links</h1>
+        <div id="social-links" class="g-flex g-flex-column g-gap-2">
+            <a class="g-link" href="https://steamcommunity.com/id/awarefoxy/" id="steam">Steam</a>
+            <a class="g-link" href="https://github.com/AwareFoxy" id="github">Github</a>
+            <a class="g-link" href="/bureaucracy.html" id="bureaucracy">Bureaucracy for SS14</a>
+            <button class="g-link g-button g-button_secondary" id="discord-copy-trigger" type="button">
+                Discord <span class="g-tooltip" id="discord-id" data-tooltip-text="awarefoxy">Copy</span>
+            </button>
+            <a class="g-link" href="https://youtu.be/ZK1pNGmNBEc?si=ng0svwOy7v1yQmB-" id="onlyfans">OnlyFans??</a>
         </div>
-        <a class="social-link" href="https://youtu.be/ZK1pNGmNBEc?si=ng0svwOy7v1yQmB-" id="onlyfans">OnlyFans??</a>
+        <div id="video" class="g-mt-3">
+            <video controls class="g-video g-w-100">
+                <source src="files/Singa.mp4" type="video/mp4">
+                Your browser does not support video playback.
+            </video>
+        </div>
     </div>
-    <div id="video">
-        <video controls width="250">
-            <source src="files/Singa.mp4" type="video/mp4">
-            bro why tf you cant see videos in browser
-        </video>
-    </div>
-</div>
-<script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
+
